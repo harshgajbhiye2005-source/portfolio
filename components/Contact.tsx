@@ -2,50 +2,34 @@
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
-import { site } from "@/lib/content";
+
+const fields = [
+  { label: "Name*", type: "text", placeholder: "Jane Smith", required: true },
+  { label: "Email*", type: "email", placeholder: "jane@example.com", required: true },
+  { label: "Phone number *", type: "tel", placeholder: "+91", required: true },
+  { label: "Where from? *", type: "text", placeholder: "Company / Organization", required: true },
+];
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <div className="grid gap-16 lg:grid-cols-2">
-        <Reveal>
-          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-accent">
-            Contact
-          </p>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            Let&apos;s build something together.
-          </h2>
-          <p className="mt-6 max-w-md text-lg text-muted">
-            Tell us about your project — we usually reply within one business
-            day.
-          </p>
-          <div className="mt-10 space-y-3 text-lg">
-            <a
-              href={`mailto:${site.email}`}
-              className="block w-fit transition-colors hover:text-accent"
-            >
-              {site.email}
-            </a>
-            <a
-              href={`tel:${site.phone.replace(/\s/g, "")}`}
-              className="block w-fit transition-colors hover:text-accent"
-            >
-              {site.phone}
-            </a>
-            <p className="text-muted">{site.location}</p>
-          </div>
-        </Reveal>
+    <section id="contact" className="mx-auto max-w-[95rem] px-5 py-32 sm:px-12">
+      <Reveal className="text-center">
+        <h2 className="display mx-auto max-w-5xl text-[clamp(2.4rem,8.3vw,7.5rem)]">
+          Crafting digital
+          <br />
+          brand stories
+        </h2>
+      </Reveal>
 
-        <Reveal delay={0.15}>
+      <div className="mt-24 grid gap-16 lg:grid-cols-[1.1fr_1fr]">
+        <Reveal>
           {sent ? (
-            <div className="flex h-full min-h-64 items-center justify-center rounded-2xl border border-accent/40 bg-surface p-8 text-center">
+            <div className="flex min-h-72 items-center justify-center border border-line p-8 text-center">
               <div>
-                <p className="text-2xl font-semibold text-accent">
-                  Thanks — message noted!
-                </p>
-                <p className="mt-3 text-muted">
+                <p className="display text-2xl">Thanks — request noted!</p>
+                <p className="mt-4 text-muted">
                   This is a demo form. Wire it to email or a form service
                   before launch.
                 </p>
@@ -53,51 +37,54 @@ export default function Contact() {
             </div>
           ) : (
             <form
-              className="space-y-5"
+              className="grid gap-12 sm:grid-cols-2"
               onSubmit={(e) => {
                 e.preventDefault();
                 setSent(true);
               }}
             >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="block">
-                  <span className="mb-2 block text-sm text-muted">Name</span>
+              {fields.map((field) => (
+                <label key={field.label} className="block">
+                  <span className="display block text-lg sm:text-xl">
+                    {field.label}
+                  </span>
                   <input
-                    required
-                    type="text"
-                    placeholder="Your name"
-                    className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
+                    required={field.required}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    className="mt-5 w-full border-b border-line bg-transparent pb-3 text-base outline-none transition-colors placeholder:text-muted/60 focus:border-foreground"
                   />
                 </label>
-                <label className="block">
-                  <span className="mb-2 block text-sm text-muted">Email</span>
-                  <input
-                    required
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
-                  />
-                </label>
-              </div>
-              <label className="block">
-                <span className="mb-2 block text-sm text-muted">
-                  What do you need?
+              ))}
+              <label className="block sm:col-span-2">
+                <span className="display block text-lg sm:text-xl">
+                  About your project
                 </span>
                 <textarea
-                  required
-                  rows={5}
-                  placeholder="Tell us about the project..."
-                  className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
+                  rows={4}
+                  placeholder="What you'd like to create..."
+                  className="mt-5 w-full resize-none border-b border-line bg-transparent pb-3 text-base outline-none transition-colors placeholder:text-muted/60 focus:border-foreground"
                 />
               </label>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-accent px-7 py-4 text-sm font-semibold text-background transition-transform hover:scale-[1.02] sm:w-auto"
-              >
-                Send message
-              </button>
+              <div>
+                <button
+                  type="submit"
+                  className="group bg-foreground px-8 py-5 text-sm font-semibold uppercase tracking-tight text-white transition-transform duration-300 hover:scale-[1.03]"
+                >
+                  [ Send a request ]
+                </button>
+              </div>
             </form>
           )}
+        </Reveal>
+
+        {/* Photo placeholder — swap for a real B&W image */}
+        <Reveal delay={0.15}>
+          <div className="relative aspect-[4/5] w-full bg-gradient-to-br from-neutral-200 via-neutral-500 to-neutral-900 grayscale">
+            <span className="absolute inset-x-0 bottom-6 text-center text-xs font-semibold uppercase tracking-widest text-white/70">
+              Image placeholder
+            </span>
+          </div>
         </Reveal>
       </div>
     </section>

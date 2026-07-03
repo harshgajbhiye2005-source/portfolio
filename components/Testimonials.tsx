@@ -1,36 +1,73 @@
 "use client";
 
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import { testimonials } from "@/lib/content";
 
+/** Carousel of giant uppercase quotes, two per slide, with dot pagination. */
 export default function Testimonials() {
-  return (
-    <section className="border-y border-line bg-surface">
-      <div className="mx-auto max-w-6xl px-6 py-28">
-        <Reveal>
-          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-accent">
-            Kind words
-          </p>
-          <h2 className="max-w-xl text-4xl font-bold tracking-tight sm:text-5xl">
-            What clients say.
-          </h2>
-        </Reveal>
+  const perSlide = 2;
+  const slides: (typeof testimonials)[] = [];
+  for (let i = 0; i < testimonials.length; i += perSlide) {
+    slides.push(testimonials.slice(i, i + perSlide));
+  }
+  const [index, setIndex] = useState(0);
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.role} delay={i * 0.1}>
-              <figure className="flex h-full flex-col justify-between rounded-2xl border border-line bg-background p-8">
-                <blockquote className="text-lg leading-relaxed">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-8">
-                  <div className="font-semibold">{t.name}</div>
-                  <div className="text-sm text-muted">{t.role}</div>
+  return (
+    <section className="mx-auto max-w-[95rem] overflow-hidden px-5 py-32 sm:px-12">
+      <Reveal>
+        <h2 className="display text-[clamp(2.4rem,8.3vw,7.5rem)]">
+          Testimonials
+        </h2>
+      </Reveal>
+
+      <div className="mt-20 min-h-[22rem]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -60 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="grid gap-16 md:grid-cols-2"
+          >
+            {slides[index].map((t) => (
+              <figure key={t.quote}>
+                <figcaption className="flex items-center gap-4">
+                  {/* Avatar placeholder */}
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-surface text-sm font-bold">
+                    {t.name
+                      .split(" ")
+                      .map((w) => w[0])
+                      .join("")}
+                  </span>
+                  <span>
+                    <span className="display block text-xl">{t.name}</span>
+                    <span className="block text-base text-muted">{t.role}</span>
+                  </span>
                 </figcaption>
+                <blockquote className="display mt-10 text-xl leading-snug sm:text-[2rem]">
+                  “ {t.quote} ”
+                </blockquote>
               </figure>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="mt-16 flex justify-center gap-2.5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Show testimonials ${i + 1}`}
+            onClick={() => setIndex(i)}
+            className={`h-2.5 w-2.5 rounded-full transition-colors duration-300 ${
+              i === index ? "bg-foreground" : "bg-neutral-300"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );

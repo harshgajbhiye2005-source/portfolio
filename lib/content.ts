@@ -1,113 +1,152 @@
 // ============================================================
-// PLACEHOLDER CONTENT — swap every value here for real company
-// content. All components read from this single file.
+// PLACEHOLDER CONTENT — swap every value here for the client's
+// real content. All components read from this single file.
 // ============================================================
 
 export const site = {
-  name: "Acme Studio",
-  tagline: "A creative studio for brands that want to be remembered.",
+  brand: "Portfix",
+  name: "Miranda Halim",
+  role: "UI & UX Designer",
+  availability: "Available for task",
+  intro:
+    "I'm a digital designer and web developer crafting bold, user-focused experiences where aesthetics and usability meet.",
   email: "hello@example.com",
   phone: "+91 00000 00000",
-  location: "Nagpur, India",
+  location: "Mumbai, India",
   socials: [
-    { label: "Instagram", href: "#" },
-    { label: "LinkedIn", href: "#" },
-    { label: "X / Twitter", href: "#" },
     { label: "Behance", href: "#" },
+    { label: "YouTube", href: "#" },
+    { label: "Dribbble", href: "#" },
+    { label: "Pinterest", href: "#" },
   ],
 };
 
 export const nav = [
+  { label: "Home", href: "#top" },
   { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
-export const marqueeItems = [
-  "Branding",
-  "Web Design",
-  "Development",
-  "Strategy",
-  "Motion",
-  "Content",
-];
-
-export const projects = [
-  {
-    title: "Project One",
-    category: "Brand Identity",
-    year: "2026",
-    // Gradient stands in for a project image — replace with real photos later.
-    gradient: "from-orange-400 via-rose-500 to-purple-600",
-  },
-  {
-    title: "Project Two",
-    category: "Web Design",
-    year: "2025",
-    gradient: "from-cyan-400 via-blue-500 to-indigo-600",
-  },
-  {
-    title: "Project Three",
-    category: "E-commerce",
-    year: "2025",
-    gradient: "from-lime-300 via-emerald-500 to-teal-700",
-  },
-  {
-    title: "Project Four",
-    category: "Motion & Content",
-    year: "2024",
-    gradient: "from-amber-300 via-orange-500 to-red-600",
-  },
+  { label: "Service", href: "#services" },
+  { label: "About me", href: "#about" },
 ];
 
 export const services = [
   {
-    title: "Brand Identity",
+    title: "UI & UX Design",
     description:
-      "Placeholder copy — logo systems, visual language, and guidelines that make a brand instantly recognizable.",
+      "Interfaces that feel effortless — research-driven flows, wireframes, and polished screens people enjoy using.",
+    tags: ["Minimal", "Website", "Visual", "UI/UX", "Usability"],
   },
   {
-    title: "Web Design & Development",
+    title: "Logo & Branding",
     description:
-      "Placeholder copy — fast, responsive websites designed to convert visitors and built to last.",
+      "Identity systems with real presence: logo, type, and color working together so the brand is recognized at a glance.",
+    tags: ["Identity", "Logo", "Guidelines", "Print", "Digital"],
   },
   {
-    title: "Digital Strategy",
+    title: "Developer Support",
     description:
-      "Placeholder copy — positioning, messaging, and go-to-market plans grounded in research.",
+      "Design that ships. Clean handoffs, tokens, and close collaboration with engineers from first commit to launch.",
+    tags: ["Handoff", "Tokens", "QA", "Systems", "Launch"],
   },
   {
-    title: "Motion & Content",
+    title: "Branding Strategy",
     description:
-      "Placeholder copy — video, animation, and social content that keeps audiences engaged.",
+      "Positioning and messaging grounded in research, so every touchpoint tells one clear, convincing story.",
+    tags: ["Research", "Positioning", "Voice", "Story", "Growth"],
   },
 ];
 
-export const stats = [
-  { value: 120, suffix: "+", label: "Projects delivered" },
-  { value: 40, suffix: "+", label: "Happy clients" },
-  { value: 8, suffix: "", label: "Years of experience" },
-  { value: 12, suffix: "", label: "Industry awards" },
+export const projects = [
+  { title: "Hillside Harmony", year: "2025", client: "Zentryx" },
+  { title: "Elmstone Retreat", year: "2024", client: "Nexora" },
+  { title: "Lakeview Bloom", year: "2024", client: "Fluxon" },
+  { title: "Cedarfield Court", year: "2023", client: "CodeVista" },
+];
+
+// Text wordmarks stand in for client logos — swap for real SVGs later.
+export const clientLogos = [
+  "Logoipsum",
+  "Brandmark",
+  "Nimbus",
+  "Vertex",
+  "Halcyon",
+  "Orbita",
+  "Kindred",
+  "Monolith",
+  "Atlas",
+];
+
+export const whyCards = [
+  {
+    tag: "Secure",
+    text: "No complex steps — just smooth, secure and fast experiences.",
+    tone: "from-neutral-400 to-neutral-700",
+  },
+  {
+    tag: "Smart",
+    text: "Smart choices and simple steps that lead to better products.",
+    tone: "from-neutral-500 to-neutral-800",
+  },
+  {
+    tag: "Instant",
+    text: "No complicated process — seamless delivery from day one.",
+    tone: "from-neutral-300 to-neutral-600",
+  },
+  {
+    tag: "Global",
+    text: "Works anywhere, anytime — built for a connected world.",
+    tone: "from-neutral-600 to-neutral-900",
+  },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Placeholder testimonial — working with the team was seamless from kickoff to launch. The results spoke for themselves.",
+      "Working together was a genuine pleasure — our vision became a digital experience beyond what we imagined.",
     name: "Client Name",
-    role: "CEO, Company One",
+    role: "CEO",
   },
   {
     quote:
-      "Placeholder testimonial — they understood our brand better than we did and translated it into a site we're proud of.",
+      "Remarkable attention to detail and creativity. Our website finally looks the way our brand deserves.",
     name: "Client Name",
-    role: "Founder, Company Two",
+    role: "CTO",
   },
   {
     quote:
-      "Placeholder testimonial — fast, thoughtful, and genuinely invested in our success. We keep coming back.",
+      "They understood our brand instantly and turned it into a site that wins us clients every week.",
     name: "Client Name",
-    role: "Marketing Lead, Company Three",
+    role: "Founder",
+  },
+  {
+    quote:
+      "Fast, thoughtful, and invested in our success from kickoff to launch. We keep coming back.",
+    name: "Client Name",
+    role: "Marketing Lead",
+  },
+];
+
+export const achievements = [
+  { year: "2021", title: "Prism", award: "Best Website Designer" },
+  { year: "2022", title: "Square", award: "Site of the Month" },
+  { year: "2024", title: "VisiCraft", award: "Excellence in Interaction" },
+];
+
+export const footerColumns = [
+  {
+    heading: "Quick links",
+    links: ["Home", "Contact", "Blog", "404"],
+  },
+  {
+    heading: "Essential",
+    links: ["About me", "Service", "Portfolio", "Let's talk"],
+  },
+  {
+    heading: "Services",
+    links: [
+      "UI & UX Design",
+      "Logo & Branding",
+      "Developer Support",
+      "Branding Strategy",
+    ],
   },
 ];

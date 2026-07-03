@@ -2,53 +2,49 @@
 
 import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import RollLink from "@/components/RollLink";
 import { projects } from "@/lib/content";
 
 export default function Work() {
   return (
-    <section id="work" className="mx-auto max-w-6xl px-6 py-28">
+    <section id="work" className="mx-auto max-w-[95rem] px-5 py-32 sm:px-12">
       <Reveal>
-        <p className="mb-3 text-sm uppercase tracking-[0.3em] text-accent">
-          Selected Work
-        </p>
-        <h2 className="max-w-xl text-4xl font-bold tracking-tight sm:text-5xl">
-          Projects we&apos;re proud of.
+        <h2 className="display text-[clamp(2.6rem,8.3vw,7.5rem)]">
+          Featured
+          <br />
+          Works
         </h2>
       </Reveal>
 
-      <div className="mt-16 grid gap-10 sm:grid-cols-2">
+      <div className="mt-20">
         {projects.map((project, i) => (
-          <Reveal key={project.title} delay={(i % 2) * 0.12}>
+          <Reveal key={project.title} delay={i * 0.07}>
             <motion.a
               href="#contact"
               whileHover="hover"
-              className="group block"
+              className="group grid grid-cols-2 items-baseline gap-4 border-t border-line py-9 last:border-b sm:grid-cols-[1.6fr_1fr_1fr]"
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <motion.div
-                  variants={{ hover: { scale: 1.06 } }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded-full bg-background/60 px-4 py-2 text-xs uppercase tracking-widest opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                    View project →
-                  </span>
-                </div>
-              </div>
-              <div className="mt-5 flex items-baseline justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold transition-colors group-hover:text-accent">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted">{project.category}</p>
-                </div>
-                <span className="text-sm text-muted">{project.year}</span>
-              </div>
+              <motion.h5
+                variants={{ hover: { x: 16 } }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="display text-xl text-muted transition-colors duration-300 group-hover:text-foreground sm:text-[2rem]"
+              >
+                {project.title}
+              </motion.h5>
+              <span className="text-right text-base text-muted sm:text-center">
+                {project.year}
+              </span>
+              <span className="hidden text-right text-base text-muted sm:block">
+                {project.client}
+              </span>
             </motion.a>
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={0.2} className="mt-16 text-center">
+        <RollLink label="More works" href="#contact" />
+      </Reveal>
     </section>
   );
 }
