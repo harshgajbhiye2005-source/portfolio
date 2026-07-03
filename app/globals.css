@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f3ef;
-  --foreground: #181611;
-  --muted: #77746c;
-  --accent: #181611; /* refined mono palette — swap for brand color */
-  --surface: #ecebe6;
-  --line: rgba(24, 22, 17, 0.1);
+  --background: #ffffff;
+  --foreground: #0d0d0d;
+  --muted: #555555;
+  --surface: #f0f0f0;
+  --dark: #0d0d0d;
+  --line: rgba(13, 13, 13, 0.12);
+  --line-invert: rgba(255, 255, 255, 0.16);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-accent: var(--accent);
   --color-surface: var(--surface);
+  --color-dark: var(--dark);
   --color-line: var(--line);
+  --color-line-invert: var(--line-invert);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-instrument-serif);
 }
 
 html {
@@ -32,18 +33,20 @@ body {
   overflow-x: hidden;
 }
 
-.font-serif-display {
-  font-family: var(--font-instrument-serif), Georgia, serif;
-  font-style: italic;
-  letter-spacing: -0.01em;
-}
-
 ::selection {
   background: var(--foreground);
   color: var(--background);
 }
 
-/* Infinite marquee */
+/* Display headline style used across all sections */
+.display {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* Infinite horizontal marquee (track duplicated for seamless loop) */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -56,11 +59,11 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 28s linear infinite;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+.marquee-reverse {
+  animation-direction: reverse;
 }
 
 @media (prefers-reduced-motion: reduce) {

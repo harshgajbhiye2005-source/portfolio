@@ -1,130 +1,91 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { site } from "@/lib/content";
+import RollLink from "@/components/RollLink";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-
   return (
-    <section
-      ref={ref}
-      id="top"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
-    >
-      {/* Soft ambient wash */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-1/4 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(24,22,17,0.06) 0%, transparent 70%)",
-        }}
-      />
-
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-4xl">
-        {/* Availability pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.8, ease }}
-          className="mx-auto mb-8 flex w-fit items-center gap-2 rounded-full border border-line bg-background/80 px-4 py-2 text-sm text-muted backdrop-blur"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          {site.availability}
-        </motion.div>
-
-        <h1 className="text-5xl font-medium leading-[1.06] tracking-[-0.03em] sm:text-7xl lg:text-8xl">
-          {/* Line 1 — mask reveal */}
-          <span className="block overflow-hidden pb-1">
-            <motion.span
-              className="block"
-              initial={{ y: "110%" }}
-              animate={{ y: "0%" }}
-              transition={{ duration: 1, delay: 0.3, ease }}
-            >
-              Design that makes
-            </motion.span>
-          </span>
-          {/* Line 2 — serif italic accent */}
-          <span className="block overflow-hidden pb-2">
-            <motion.span
-              className="block"
-              initial={{ y: "110%" }}
-              animate={{ y: "0%" }}
-              transition={{ duration: 1, delay: 0.45, ease }}
-            >
-              brands{" "}
-              <em className="font-serif-display font-normal">unforgettable</em>
-            </motion.span>
-          </span>
+    <section id="top" className="overflow-hidden px-5 pb-24 pt-28 sm:px-12 sm:pt-36">
+      <div className="mx-auto max-w-[95rem]">
+        {/* Giant name — masked line reveal */}
+        <h1 className="display overflow-hidden whitespace-nowrap text-center text-[clamp(2.6rem,11vw,10.4rem)]">
+          <motion.span
+            className="block"
+            initial={{ y: "105%" }}
+            animate={{ y: "0%" }}
+            transition={{ duration: 1.1, delay: 0.15, ease }}
+          >
+            {site.name}
+          </motion.span>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.8, ease }}
-          className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted"
-        >
-          {site.tagline}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8, ease }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <a
-            href="#work"
-            className="rounded-full bg-foreground px-8 py-4 text-sm font-medium text-background transition-transform duration-300 hover:scale-105"
+        {/* Three-column composition under the name */}
+        <div className="mt-10 grid items-end gap-12 lg:grid-cols-[1fr_1.1fr_1fr] lg:gap-8">
+          {/* Left: role label + collage placeholder */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.7, ease }}
+            className="order-2 lg:order-1"
           >
-            View my work
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-line bg-background/60 px-8 py-4 text-sm font-medium backdrop-blur transition-colors duration-300 hover:border-foreground"
+            <RollLink label={site.role} href="#services" />
+            {/* Collage placeholder — swap for a real work snapshot */}
+            <div className="mt-6 grid aspect-[3/2] max-w-xs grid-cols-3 gap-1 bg-neutral-200 p-1">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`bg-gradient-to-br ${
+                    i % 2
+                      ? "from-neutral-100 to-neutral-300"
+                      : "from-neutral-300 to-neutral-400"
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Center: portrait over rotated pastel shapes */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease }}
+            className="relative order-1 mx-auto w-full max-w-md lg:order-2"
           >
-            Get in touch
-          </a>
-        </motion.div>
+            <div
+              aria-hidden
+              className="absolute -inset-x-6 inset-y-10 rotate-[8deg] bg-fuchsia-200"
+            />
+            <div
+              aria-hidden
+              className="absolute -inset-x-4 inset-y-16 -rotate-[6deg] bg-indigo-200"
+            />
+            {/* Portrait placeholder — swap for a real B&W photo */}
+            <div className="relative aspect-[3/4] w-full bg-gradient-to-b from-neutral-300 via-neutral-400 to-neutral-800 grayscale">
+              <span className="absolute inset-x-0 bottom-6 text-center text-xs font-semibold uppercase tracking-widest text-white/70">
+                Portrait placeholder
+              </span>
+            </div>
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-14 text-sm uppercase tracking-[0.25em] text-muted"
-        >
-          {site.role} — {site.location}
-        </motion.p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.25em] text-muted"
-      >
-        <motion.span
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          className="inline-block"
-        >
-          Scroll ↓
-        </motion.span>
-      </motion.div>
+          {/* Right: intro + availability */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.85, ease }}
+            className="order-3 lg:justify-self-end"
+          >
+            <p className="max-w-xs text-base leading-relaxed text-foreground">
+              {site.intro}
+            </p>
+            <div className="mt-8">
+              <RollLink label={site.availability} href="#contact" />
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["400", "600", "700", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Miranda — Digital Designer & Art Director",
+  title: "Miranda Halim — UI & UX Designer",
   description:
-    "Placeholder — portfolio of a digital designer crafting refined brand identities, websites, and digital experiences.",
+    "Placeholder — portfolio of a digital designer and web developer crafting bold, user-focused digital experiences.",
 };
 
 export default function RootLayout({
@@ -26,10 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
