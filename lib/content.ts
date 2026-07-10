@@ -1,24 +1,22 @@
 // ============================================================
 // SITE CONTENT — everything the site displays lives here.
-// Lines marked TODO still need your real details: edit the
-// value, push to main, and the live site updates automatically.
+// Lines marked TODO still need real details: edit the value,
+// push to main, and the live site updates automatically.
 // ============================================================
 
 export const site = {
   brand: "Harsh",
   name: "Harsh Gajbhiye",
-  role: "Aspiring Web Developer",
-  availability: "Open to internships",
+  role: "Digital Marketing Graduate",
+  availability: "Open to opportunities",
   intro:
-    "I'm a student and self-taught web developer who loves turning ideas into clean, fast websites. Currently learning by building — one project at a time.",
-  email: "gajju2501@gmail.com",
-  phone: "+91 00000 00000", // TODO: your phone number (or delete where unused)
-  location: "India", // TODO: your city
+    "BBA graduate in Digital Marketing from MIT-WPU. I build websites for real clients and bring an athlete's discipline — honed on national and international cricket fields — to everything I do.",
+  email: "harsh.gajbhiye2005@gmail.com",
+  phone: "+91 95038 72686",
+  location: "Nagpur, Maharashtra",
   socials: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/harsh-gajbhiye" },
     { label: "GitHub", href: "https://github.com/harshgajbhiye2005-source" },
-    { label: "LinkedIn", href: "#" }, // TODO: your LinkedIn URL
-    { label: "X / Twitter", href: "#" }, // TODO: or remove
-    { label: "Instagram", href: "#" }, // TODO: or remove
   ],
 };
 
@@ -32,104 +30,110 @@ export const nav = [
 // Shown as the stack of cards in the dark "skills" section.
 export const services = [
   {
-    title: "Web Development",
+    title: "Digital Marketing",
     description:
-      "Building responsive, modern websites with React and Next.js — from a blank folder to a deployed site people can actually use.",
-    tags: ["React", "Next.js", "Tailwind", "Responsive", "Deployment"],
+      "BBA in Digital Marketing from MIT-WPU (8/10 GPA) — grounded in strategy, branding, and campaigns that actually reach people.",
+    tags: ["Strategy", "Branding", "Social Media", "SEO", "Campaigns"],
   },
   {
-    title: "Frontend Fundamentals",
+    title: "Website Development",
     description:
-      "Strong foundations in HTML, CSS, and JavaScript — semantic markup, layouts that don't break, and interfaces that feel smooth.",
-    tags: ["HTML", "CSS", "JavaScript", "TypeScript", "Accessibility"],
+      "I design and ship websites for real clients — from first brief to live launch, including PS Group and Artistically Yours.",
+    tags: ["Client Work", "Responsive", "Design", "Launch", "Maintenance"],
   },
   {
-    title: "Problem Solving",
+    title: "Client Servicing & Operations",
     description:
-      "Practicing data structures and algorithms, debugging patiently, and reading docs before asking — the unglamorous skills that ship projects.",
-    tags: ["DSA", "Debugging", "Git", "Logic", "Persistence"],
+      "Two internships across operations and client servicing — keeping projects moving, clients informed, and details handled.",
+    tags: ["Communication", "Coordination", "Process", "Delivery", "Follow-through"],
   },
   {
-    title: "Always Learning",
+    title: "Athlete's Discipline",
     description:
-      "New tools don't scare me. I pick up frameworks and concepts fast, learn in public, and improve every project over the last one.",
-    tags: ["Curiosity", "Self-taught", "Consistency", "Growth", "Open Source"],
+      "Cricket at the national and international level teaches what no classroom can: consistency, pressure handling, and showing up every day.",
+    tags: ["Teamwork", "Consistency", "Pressure", "Leadership", "Work Ethic"],
   },
 ];
 
-// Featured projects list — title / year / tech or context.
+// Featured projects list — title / status / context.
 export const projects = [
-  { title: "Portfolio Website", year: "2026", client: "Next.js · Tailwind" },
-  // TODO: replace these with your real projects
-  { title: "Project Two", year: "2026", client: "Coming soon" },
-  { title: "Project Three", year: "2025", client: "Coming soon" },
-  { title: "Project Four", year: "2025", client: "Coming soon" },
-];
-
-// Rendered as the wordmark grid — used here as a tech-stack wall.
-export const clientLogos = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Tailwind",
-  "Git & GitHub",
-  "Node.js",
+  { title: "PS Group Website", year: "Completed", client: "Client work" },
+  { title: "Artistically Yours", year: "In progress", client: "Client work" },
+  { title: "Portfolio Website", year: "2026", client: "Personal · Next.js" },
 ];
 
 export const whyCards = [
   {
-    tag: "Curious",
-    text: "I ask why until I understand — then build it to prove it.",
+    tag: "Disciplined",
+    text: "Trained like an athlete — consistent effort, no shortcuts, every single day.",
     tone: "from-neutral-400 to-neutral-700",
   },
   {
-    tag: "Fast learner",
-    text: "New stack, new tool, new concept — give me a week, not a semester.",
+    tag: "Client-first",
+    text: "Internships in client servicing taught me to listen first and deliver on time.",
     tone: "from-neutral-500 to-neutral-800",
   },
   {
-    tag: "Reliable",
-    text: "I show up, hit deadlines, and communicate before problems grow.",
+    tag: "Fast learner",
+    text: "New tools, new briefs, new industries — give me a week, not a semester.",
     tone: "from-neutral-300 to-neutral-600",
   },
   {
     tag: "Team player",
-    text: "Happy to review, be reviewed, and learn from people ahead of me.",
+    text: "Years of team sport: communicate early, back your teammates, win together.",
     tone: "from-neutral-600 to-neutral-900",
   },
 ];
 
-// TODO: swap in real quotes from mentors, teachers, or teammates.
+// TODO: swap in real quotes from clients, mentors, or coaches.
 export const testimonials = [
   {
     quote:
-      "Harsh picks things up remarkably fast and isn't afraid to dig into problems until they're actually solved.",
+      "Harsh handled our website from brief to launch and kept us in the loop the whole way — exactly what you want from a partner.",
+    name: "Client Name",
+    role: "PS Group",
+  },
+  {
+    quote:
+      "Dependable, organized, and quick to pick things up — he made our operations smoother within weeks.",
     name: "Mentor Name",
-    role: "Mentor",
+    role: "Internship supervisor",
   },
   {
     quote:
-      "Dependable and genuinely curious — the kind of teammate who makes group projects easier, not harder.",
-    name: "Teammate Name",
-    role: "Project teammate",
-  },
-  {
-    quote:
-      "Consistent effort and steady improvement across the whole course. A pleasure to teach.",
-    name: "Teacher Name",
-    role: "Instructor",
+      "The discipline he brings from cricket shows in his work: consistent, focused, and calm under pressure.",
+    name: "Coach Name",
+    role: "Coach",
   },
 ];
 
-// Rendered under "My Achievements" — education and milestones work well here.
+// Rendered as [tag | thumbnails | title | detail] rows.
 export const achievements = [
-  // TODO: replace with your real education / milestones
-  { year: "2023", title: "Higher Secondary", award: "Completed HSC" },
-  { year: "2025", title: "B.Tech / Degree", award: "Currently pursuing" },
-  { year: "2026", title: "First deployment", award: "Portfolio live on GitHub Pages" },
+  {
+    year: "Education",
+    title: "BBA, Digital Marketing",
+    award: "MIT-WPU · 8/10 GPA",
+  },
+  {
+    year: "Cricket",
+    title: "International Level",
+    award: "Played internationally",
+  },
+  {
+    year: "Cricket",
+    title: "National Level",
+    award: "Represented Maharashtra",
+  },
+  {
+    year: "Badminton",
+    title: "District Level",
+    award: "Competitive player",
+  },
+  {
+    year: "Experience",
+    title: "2 Internships",
+    award: "Operations · Client Servicing",
+  },
 ];
 
 export const footerColumns = [
@@ -139,15 +143,15 @@ export const footerColumns = [
   },
   {
     heading: "Find me",
-    links: ["GitHub", "LinkedIn", "Email", "Resume"],
+    links: ["LinkedIn", "GitHub", "Email", "Resume"],
   },
   {
     heading: "Skills",
     links: [
-      "Web Development",
-      "Frontend Fundamentals",
-      "Problem Solving",
-      "Always Learning",
+      "Digital Marketing",
+      "Website Development",
+      "Client Servicing",
+      "Operations",
     ],
   },
 ];

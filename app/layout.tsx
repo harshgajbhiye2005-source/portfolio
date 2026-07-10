@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Harsh Gajbhiye — Aspiring Web Developer",
+  title: "Harsh Gajbhiye — Digital Marketing & Websites",
   description:
-    "Portfolio of Harsh Gajbhiye, a student and self-taught web developer building clean, fast websites with React and Next.js.",
+    "Portfolio of Harsh Gajbhiye — BBA Digital Marketing graduate from MIT-WPU, website builder for real clients, and national-level cricketer from Nagpur.",
 };
 
 export default function RootLayout({

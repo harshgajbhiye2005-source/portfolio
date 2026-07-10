@@ -2,7 +2,6 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
-import LogoGrid from "@/components/LogoGrid";
 import Why from "@/components/Why";
 import Testimonials from "@/components/Testimonials";
 import MarqueeBand from "@/components/MarqueeBand";
@@ -17,7 +16,6 @@ export default function Home() {
       <Hero />
       <Services />
       <Work />
-      <LogoGrid />
       <Why />
       <Testimonials />
       <MarqueeBand words={["Let’s collaborate", "Start a project"]} dark />
