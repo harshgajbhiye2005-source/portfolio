@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Miranda Halim — UI & UX Designer",
+  title: "Harsh Gajbhiye — Aspiring Web Developer",
   description:
-    "Placeholder — portfolio of a digital designer and web developer crafting bold, user-focused digital experiences.",
+    "Portfolio of Harsh Gajbhiye, a student and self-taught web developer building clean, fast websites with React and Next.js.",
 };
 
 export default function RootLayout({

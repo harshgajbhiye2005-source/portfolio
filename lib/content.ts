@@ -1,152 +1,153 @@
 // ============================================================
-// PLACEHOLDER CONTENT — swap every value here for the client's
-// real content. All components read from this single file.
+// SITE CONTENT — everything the site displays lives here.
+// Lines marked TODO still need your real details: edit the
+// value, push to main, and the live site updates automatically.
 // ============================================================
 
 export const site = {
-  brand: "Portfix",
-  name: "Miranda Halim",
-  role: "UI & UX Designer",
-  availability: "Available for task",
+  brand: "Harsh",
+  name: "Harsh Gajbhiye",
+  role: "Aspiring Web Developer",
+  availability: "Open to internships",
   intro:
-    "I'm a digital designer and web developer crafting bold, user-focused experiences where aesthetics and usability meet.",
-  email: "hello@example.com",
-  phone: "+91 00000 00000",
-  location: "Mumbai, India",
+    "I'm a student and self-taught web developer who loves turning ideas into clean, fast websites. Currently learning by building — one project at a time.",
+  email: "gajju2501@gmail.com",
+  phone: "+91 00000 00000", // TODO: your phone number (or delete where unused)
+  location: "India", // TODO: your city
   socials: [
-    { label: "Behance", href: "#" },
-    { label: "YouTube", href: "#" },
-    { label: "Dribbble", href: "#" },
-    { label: "Pinterest", href: "#" },
+    { label: "GitHub", href: "https://github.com/harshgajbhiye2005-source" },
+    { label: "LinkedIn", href: "#" }, // TODO: your LinkedIn URL
+    { label: "X / Twitter", href: "#" }, // TODO: or remove
+    { label: "Instagram", href: "#" }, // TODO: or remove
   ],
 };
 
 export const nav = [
   { label: "Home", href: "#top" },
-  { label: "Work", href: "#work" },
-  { label: "Service", href: "#services" },
+  { label: "Projects", href: "#work" },
+  { label: "Skills", href: "#services" },
   { label: "About me", href: "#about" },
 ];
 
+// Shown as the stack of cards in the dark "skills" section.
 export const services = [
   {
-    title: "UI & UX Design",
+    title: "Web Development",
     description:
-      "Interfaces that feel effortless — research-driven flows, wireframes, and polished screens people enjoy using.",
-    tags: ["Minimal", "Website", "Visual", "UI/UX", "Usability"],
+      "Building responsive, modern websites with React and Next.js — from a blank folder to a deployed site people can actually use.",
+    tags: ["React", "Next.js", "Tailwind", "Responsive", "Deployment"],
   },
   {
-    title: "Logo & Branding",
+    title: "Frontend Fundamentals",
     description:
-      "Identity systems with real presence: logo, type, and color working together so the brand is recognized at a glance.",
-    tags: ["Identity", "Logo", "Guidelines", "Print", "Digital"],
+      "Strong foundations in HTML, CSS, and JavaScript — semantic markup, layouts that don't break, and interfaces that feel smooth.",
+    tags: ["HTML", "CSS", "JavaScript", "TypeScript", "Accessibility"],
   },
   {
-    title: "Developer Support",
+    title: "Problem Solving",
     description:
-      "Design that ships. Clean handoffs, tokens, and close collaboration with engineers from first commit to launch.",
-    tags: ["Handoff", "Tokens", "QA", "Systems", "Launch"],
+      "Practicing data structures and algorithms, debugging patiently, and reading docs before asking — the unglamorous skills that ship projects.",
+    tags: ["DSA", "Debugging", "Git", "Logic", "Persistence"],
   },
   {
-    title: "Branding Strategy",
+    title: "Always Learning",
     description:
-      "Positioning and messaging grounded in research, so every touchpoint tells one clear, convincing story.",
-    tags: ["Research", "Positioning", "Voice", "Story", "Growth"],
+      "New tools don't scare me. I pick up frameworks and concepts fast, learn in public, and improve every project over the last one.",
+    tags: ["Curiosity", "Self-taught", "Consistency", "Growth", "Open Source"],
   },
 ];
 
+// Featured projects list — title / year / tech or context.
 export const projects = [
-  { title: "Hillside Harmony", year: "2025", client: "Zentryx" },
-  { title: "Elmstone Retreat", year: "2024", client: "Nexora" },
-  { title: "Lakeview Bloom", year: "2024", client: "Fluxon" },
-  { title: "Cedarfield Court", year: "2023", client: "CodeVista" },
+  { title: "Portfolio Website", year: "2026", client: "Next.js · Tailwind" },
+  // TODO: replace these with your real projects
+  { title: "Project Two", year: "2026", client: "Coming soon" },
+  { title: "Project Three", year: "2025", client: "Coming soon" },
+  { title: "Project Four", year: "2025", client: "Coming soon" },
 ];
 
-// Text wordmarks stand in for client logos — swap for real SVGs later.
+// Rendered as the wordmark grid — used here as a tech-stack wall.
 export const clientLogos = [
-  "Logoipsum",
-  "Brandmark",
-  "Nimbus",
-  "Vertex",
-  "Halcyon",
-  "Orbita",
-  "Kindred",
-  "Monolith",
-  "Atlas",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Tailwind",
+  "Git & GitHub",
+  "Node.js",
 ];
 
 export const whyCards = [
   {
-    tag: "Secure",
-    text: "No complex steps — just smooth, secure and fast experiences.",
+    tag: "Curious",
+    text: "I ask why until I understand — then build it to prove it.",
     tone: "from-neutral-400 to-neutral-700",
   },
   {
-    tag: "Smart",
-    text: "Smart choices and simple steps that lead to better products.",
+    tag: "Fast learner",
+    text: "New stack, new tool, new concept — give me a week, not a semester.",
     tone: "from-neutral-500 to-neutral-800",
   },
   {
-    tag: "Instant",
-    text: "No complicated process — seamless delivery from day one.",
+    tag: "Reliable",
+    text: "I show up, hit deadlines, and communicate before problems grow.",
     tone: "from-neutral-300 to-neutral-600",
   },
   {
-    tag: "Global",
-    text: "Works anywhere, anytime — built for a connected world.",
+    tag: "Team player",
+    text: "Happy to review, be reviewed, and learn from people ahead of me.",
     tone: "from-neutral-600 to-neutral-900",
   },
 ];
 
+// TODO: swap in real quotes from mentors, teachers, or teammates.
 export const testimonials = [
   {
     quote:
-      "Working together was a genuine pleasure — our vision became a digital experience beyond what we imagined.",
-    name: "Client Name",
-    role: "CEO",
+      "Harsh picks things up remarkably fast and isn't afraid to dig into problems until they're actually solved.",
+    name: "Mentor Name",
+    role: "Mentor",
   },
   {
     quote:
-      "Remarkable attention to detail and creativity. Our website finally looks the way our brand deserves.",
-    name: "Client Name",
-    role: "CTO",
+      "Dependable and genuinely curious — the kind of teammate who makes group projects easier, not harder.",
+    name: "Teammate Name",
+    role: "Project teammate",
   },
   {
     quote:
-      "They understood our brand instantly and turned it into a site that wins us clients every week.",
-    name: "Client Name",
-    role: "Founder",
-  },
-  {
-    quote:
-      "Fast, thoughtful, and invested in our success from kickoff to launch. We keep coming back.",
-    name: "Client Name",
-    role: "Marketing Lead",
+      "Consistent effort and steady improvement across the whole course. A pleasure to teach.",
+    name: "Teacher Name",
+    role: "Instructor",
   },
 ];
 
+// Rendered under "My Achievements" — education and milestones work well here.
 export const achievements = [
-  { year: "2021", title: "Prism", award: "Best Website Designer" },
-  { year: "2022", title: "Square", award: "Site of the Month" },
-  { year: "2024", title: "VisiCraft", award: "Excellence in Interaction" },
+  // TODO: replace with your real education / milestones
+  { year: "2023", title: "Higher Secondary", award: "Completed HSC" },
+  { year: "2025", title: "B.Tech / Degree", award: "Currently pursuing" },
+  { year: "2026", title: "First deployment", award: "Portfolio live on GitHub Pages" },
 ];
 
 export const footerColumns = [
   {
     heading: "Quick links",
-    links: ["Home", "Contact", "Blog", "404"],
+    links: ["Home", "Projects", "Skills", "About me"],
   },
   {
-    heading: "Essential",
-    links: ["About me", "Service", "Portfolio", "Let's talk"],
+    heading: "Find me",
+    links: ["GitHub", "LinkedIn", "Email", "Resume"],
   },
   {
-    heading: "Services",
+    heading: "Skills",
     links: [
-      "UI & UX Design",
-      "Logo & Branding",
-      "Developer Support",
-      "Branding Strategy",
+      "Web Development",
+      "Frontend Fundamentals",
+      "Problem Solving",
+      "Always Learning",
     ],
   },
 ];

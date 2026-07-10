@@ -17,9 +17,9 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-[95rem] px-5 py-32 sm:px-12">
       <Reveal className="text-center">
         <h2 className="display mx-auto max-w-5xl text-[clamp(2.4rem,8.3vw,7.5rem)]">
-          Crafting digital
+          Let&apos;s build
           <br />
-          brand stories
+          something together
         </h2>
       </Reveal>
 
