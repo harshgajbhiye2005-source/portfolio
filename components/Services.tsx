@@ -1,62 +1,44 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { services } from "@/lib/content";
 
-/**
- * Dark section: giant ghosted marquee text runs behind a stack of white
- * service cards. Each card is slightly rotated and sticks as you scroll,
- * piling up like scattered papers.
- */
 export default function Services() {
-  const rotations = [-2.5, 3, -3.5, 2];
-
   return (
-    <section id="services" className="relative overflow-hidden bg-dark py-32">
-      {/* Ghost background text */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-24 select-none overflow-hidden"
-      >
-        <div className="marquee-track" style={{ "--marquee-duration": "60s" } as React.CSSProperties}>
-          {[0, 1].map((n) => (
-            <span
-              key={n}
-              className="display whitespace-nowrap pr-24 text-[16rem] text-white/[0.07]"
-            >
-              Expertise ✦ Capabilities ✦ Skills ✦
-            </span>
+    <section id="services" className="px-5 py-24 sm:px-10 sm:py-32">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <p className="eyebrow">What I do</p>
+          <h2 className="display mt-3 max-w-2xl text-4xl sm:text-5xl">
+            Skills I bring to the table
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {services.map((service, i) => (
+            <Reveal key={service.title} delay={i * 0.08}>
+              <article className="flex h-full flex-col rounded-2xl border border-line bg-white p-8 transition-shadow duration-300 hover:shadow-lg sm:p-10">
+                <span className="display text-sm text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="display mt-4 text-2xl sm:text-[1.7rem]">
+                  {service.title}
+                </h3>
+                <p className="mt-4 flex-1 text-base leading-relaxed text-muted">
+                  {service.description}
+                </p>
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-surface px-3.5 py-1.5 text-xs font-medium text-muted"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
-      </div>
-
-      <div className="relative mx-auto max-w-3xl px-5">
-        {services.map((service, i) => (
-          <div key={service.title} className="sticky top-[16vh] pb-16">
-            <motion.article
-              initial={{ opacity: 0, y: 80, rotate: 0 }}
-              whileInView={{ opacity: 1, y: 0, rotate: rotations[i % 4] }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-8 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:p-12"
-            >
-              <h5 className="display text-2xl sm:text-[2rem]">{service.title}</h5>
-              <p className="mt-10 max-w-lg text-base leading-relaxed text-muted sm:mt-16">
-                {service.description}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.article>
-          </div>
-        ))}
       </div>
     </section>
   );

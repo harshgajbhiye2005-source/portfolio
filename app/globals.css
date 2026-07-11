@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0d0d0d;
-  --muted: #555555;
-  --surface: #f0f0f0;
-  --dark: #0d0d0d;
-  --line: rgba(13, 13, 13, 0.12);
+  --background: #faf9f7;
+  --foreground: #1c1917;
+  --muted: #78716c;
+  --surface: #f3f1ee;
+  --dark: #1c1917;
+  --line: rgba(28, 25, 23, 0.1);
   --line-invert: rgba(255, 255, 255, 0.16);
+  --accent: #4f46e5;
+  --accent-soft: #eef2ff;
 }
 
 @theme inline {
@@ -18,6 +20,8 @@
   --color-dark: var(--dark);
   --color-line: var(--line);
   --color-line-invert: var(--line-invert);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-inter);
 }
 
@@ -34,42 +38,28 @@ body {
 }
 
 ::selection {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--accent);
+  color: #ffffff;
 }
 
-/* Display headline style used across all sections */
+/* Serif display style used for headings across all sections */
 .display {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+/* Small uppercase eyebrow label above section headings */
+.eyebrow {
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
-/* Infinite horizontal marquee (track duplicated for seamless loop) */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee var(--marquee-duration, 30s) linear infinite;
-}
-
-.marquee-reverse {
-  animation-direction: reverse;
+  letter-spacing: 0.14em;
+  color: var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
   html {
     scroll-behavior: auto;
   }

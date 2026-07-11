@@ -1,94 +1,48 @@
-"use client";
-
-import { useState } from "react";
-import Image from "next/image";
 import Reveal from "@/components/Reveal";
-
-const fields = [
-  { label: "Name*", type: "text", placeholder: "Jane Smith", required: true },
-  { label: "Email*", type: "email", placeholder: "jane@example.com", required: true },
-  { label: "Phone number *", type: "tel", placeholder: "+91", required: true },
-  { label: "Where from? *", type: "text", placeholder: "Company / Organization", required: true },
-];
+import { site } from "@/lib/content";
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
-
   return (
-    <section id="contact" className="mx-auto max-w-[95rem] px-5 py-32 sm:px-12">
-      <Reveal className="text-center">
-        <h2 className="display mx-auto max-w-5xl text-[clamp(2.4rem,8.3vw,7.5rem)]">
-          Let&apos;s build
-          <br />
-          something together
-        </h2>
-      </Reveal>
-
-      <div className="mt-24 grid gap-16 lg:grid-cols-[1.1fr_1fr]">
+    <section id="contact" className="px-5 py-24 sm:px-10 sm:py-32">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
-          {sent ? (
-            <div className="flex min-h-72 items-center justify-center border border-line p-8 text-center">
-              <div>
-                <p className="display text-2xl">Thanks — request noted!</p>
-                <p className="mt-4 text-muted">
-                  This is a demo form. Wire it to email or a form service
-                  before launch.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <form
-              className="grid gap-12 sm:grid-cols-2"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
-              {fields.map((field) => (
-                <label key={field.label} className="block">
-                  <span className="display block text-lg sm:text-xl">
-                    {field.label}
-                  </span>
-                  <input
-                    required={field.required}
-                    type={field.type}
-                    placeholder={field.placeholder}
-                    className="mt-5 w-full border-b border-line bg-transparent pb-3 text-base outline-none transition-colors placeholder:text-muted/60 focus:border-foreground"
-                  />
-                </label>
-              ))}
-              <label className="block sm:col-span-2">
-                <span className="display block text-lg sm:text-xl">
-                  About your project
-                </span>
-                <textarea
-                  rows={4}
-                  placeholder="What you'd like to create..."
-                  className="mt-5 w-full resize-none border-b border-line bg-transparent pb-3 text-base outline-none transition-colors placeholder:text-muted/60 focus:border-foreground"
-                />
-              </label>
-              <div>
-                <button
-                  type="submit"
-                  className="group bg-foreground px-8 py-5 text-sm font-semibold uppercase tracking-tight text-white transition-transform duration-300 hover:scale-[1.03]"
-                >
-                  [ Send a request ]
-                </button>
-              </div>
-            </form>
-          )}
-        </Reveal>
+          <div className="rounded-[2rem] bg-dark px-8 py-16 text-center text-white sm:px-16 sm:py-24">
+            <p className="eyebrow">Contact</p>
+            <h2 className="display mx-auto mt-4 max-w-2xl text-4xl sm:text-5xl lg:text-6xl">
+              Let&apos;s build something together
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/70">
+              Whether it&apos;s a marketing role, an internship, or a website
+              you need built — I&apos;d love to hear from you.
+            </p>
 
-        {/* Photo — served from public/portrait.jpg; grayscale keeps the B&W look */}
-        <Reveal delay={0.15}>
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-400 grayscale">
-            <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/portrait.jpg`}
-              alt="Harsh Gajbhiye"
-              fill
-              sizes="(min-width: 1024px) 40rem, 100vw"
-              className="object-cover object-top"
-            />
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href={`mailto:${site.email}`}
+                className="rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-dark transition-transform duration-200 hover:scale-[1.04]"
+              >
+                {site.email}
+              </a>
+              <a
+                href={`tel:${site.phone.replace(/\s/g, "")}`}
+                className="rounded-full border border-line-invert px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+              >
+                {site.phone}
+              </a>
+              {site.socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="rounded-full border border-line-invert px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+                >
+                  {social.label}
+                </a>
+              ))}
+            </div>
+
+            <p className="mt-10 text-sm text-white/50">
+              Based in {site.location}
+            </p>
           </div>
         </Reveal>
       </div>
