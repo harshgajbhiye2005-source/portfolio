@@ -3,94 +3,92 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { site } from "@/lib/content";
-import RollLink from "@/components/RollLink";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
+  const firstName = site.name.split(" ")[0];
+
   return (
-    <section id="top" className="overflow-hidden px-5 pb-24 pt-28 sm:px-12 sm:pt-36">
-      <div className="mx-auto max-w-[95rem]">
-        {/* Giant name — masked line reveal */}
-        <h1 className="display overflow-hidden whitespace-nowrap text-center text-[clamp(2.6rem,11vw,10.4rem)]">
-          <motion.span
-            className="block"
-            initial={{ y: "105%" }}
-            animate={{ y: "0%" }}
-            transition={{ duration: 1.1, delay: 0.15, ease }}
-          >
-            {site.name}
-          </motion.span>
-        </h1>
-
-        {/* Three-column composition under the name */}
-        <div className="mt-10 grid items-end gap-12 lg:grid-cols-[1fr_1.1fr_1fr] lg:gap-8">
-          {/* Left: role label + collage placeholder */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
+    <section id="top" className="overflow-hidden px-5 pb-24 pt-32 sm:px-10 sm:pt-44">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+        {/* Left: intro */}
+        <div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.7, ease }}
-            className="order-2 lg:order-1"
+            transition={{ duration: 0.7, delay: 0.1, ease }}
+            className="inline-flex items-center gap-2.5 rounded-full border border-line bg-white px-4 py-2 text-sm text-muted"
           >
-            <RollLink label={site.role} href="#services" />
-            {/* Collage placeholder — swap for a real work snapshot */}
-            <div className="mt-6 grid aspect-[3/2] max-w-xs grid-cols-3 gap-1 bg-neutral-200 p-1">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`bg-gradient-to-br ${
-                    i % 2
-                      ? "from-neutral-100 to-neutral-300"
-                      : "from-neutral-300 to-neutral-400"
-                  }`}
-                />
-              ))}
-            </div>
-          </motion.div>
+            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            {site.availability} · {site.location}
+          </motion.p>
 
-          {/* Center: portrait over rotated pastel shapes */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease }}
-            className="relative order-1 mx-auto w-full max-w-md lg:order-2"
-          >
-            <div
-              aria-hidden
-              className="absolute -inset-x-6 inset-y-10 rotate-[8deg] bg-fuchsia-200"
-            />
-            <div
-              aria-hidden
-              className="absolute -inset-x-4 inset-y-16 -rotate-[6deg] bg-indigo-200"
-            />
-            {/* Portrait — served from public/portrait.jpg; grayscale keeps the B&W look */}
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-400 grayscale">
-              <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/portrait.jpg`}
-                alt={site.name}
-                fill
-                priority
-                sizes="(min-width: 1024px) 28rem, 100vw"
-                className="object-cover object-top"
-              />
-            </div>
-          </motion.div>
-
-          {/* Right: intro + availability */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.85, ease }}
-            className="order-3 lg:justify-self-end"
+            transition={{ duration: 0.8, delay: 0.25, ease }}
+            className="display mt-7 text-5xl sm:text-6xl lg:text-[4.4rem]"
           >
-            <p className="max-w-xs text-base leading-relaxed text-foreground">
-              {site.intro}
-            </p>
-            <div className="mt-8">
-              <RollLink label={site.availability} href="#contact" />
-            </div>
+            Hi, I&apos;m {firstName} —<br />
+            <span className="text-accent italic">{site.role.toLowerCase()}</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease }}
+            className="mt-7 max-w-xl text-lg leading-relaxed text-muted"
+          >
+            {site.intro}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55, ease }}
+            className="mt-9 flex flex-wrap items-center gap-4"
+          >
+            <a
+              href={`mailto:${site.email}`}
+              className="rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-white transition-transform duration-200 hover:scale-[1.04]"
+            >
+              Email me
+            </a>
+            {site.socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                className="rounded-full border border-line bg-white px-7 py-3.5 text-sm font-semibold transition-colors duration-200 hover:border-foreground"
+              >
+                {social.label}
+              </a>
+            ))}
           </motion.div>
         </div>
+
+        {/* Right: portrait */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.35, ease }}
+          className="relative mx-auto w-full max-w-sm lg:max-w-none"
+        >
+          <div
+            aria-hidden
+            className="absolute -inset-4 rotate-3 rounded-[2.5rem] bg-accent-soft"
+          />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-xl ring-1 ring-line">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/portrait.jpg`}
+              alt={site.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 26rem, 100vw"
+              className="object-cover object-top"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

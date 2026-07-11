@@ -113,22 +113,3 @@ export const achievements = [
   },
 ];
 
-export const footerColumns = [
-  {
-    heading: "Quick links",
-    links: ["Home", "Projects", "Skills", "About me"],
-  },
-  {
-    heading: "Find me",
-    links: ["LinkedIn", "GitHub", "Email", "Resume"],
-  },
-  {
-    heading: "Skills",
-    links: [
-      "Digital Marketing",
-      "Website Development",
-      "Client Servicing",
-      "Operations",
-    ],
-  },
-];
