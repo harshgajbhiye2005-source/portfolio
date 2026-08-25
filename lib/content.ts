@@ -84,6 +84,9 @@ export type Project = {
   lead?: boolean;
   href?: string;
   links?: { label: string; href: string }[];
+  // Real screenshots of the live sites. Intrinsic dimensions are declared so
+  // the browser reserves space and nothing shifts while they load.
+  image?: { src: string; width: number; height: number; alt: string };
 };
 
 export const projects: Project[] = [
@@ -95,12 +98,26 @@ export const projects: Project[] = [
       "A marketing site built and shipped end to end, from the first brief through to launch.",
     lead: true,
     href: "https://psgroupnagpur.tiiny.site/",
+    image: {
+      src: "/work-psgroup.jpg",
+      width: 1200,
+      height: 750,
+      alt: "The PS Group Nagpur homepage, headlined Three trusted services. One family.",
+    },
   },
   {
     title: "Artistically Yours",
     status: "In progress",
     client: "Client work",
-    summary: "A website in build for a Nagpur art and design studio.",
+    summary:
+      "A site in build for a Nagpur branding and design studio, live but still growing.",
+    href: "https://harshgajbhiye2005-source.github.io/artisticallyyours/",
+    image: {
+      src: "/work-artisticallyyours.jpg",
+      width: 1100,
+      height: 688,
+      alt: "The Artistically Yours homepage, headlined Build what you're proud of.",
+    },
   },
   {
     title: "Social Content",
