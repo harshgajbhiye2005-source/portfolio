@@ -1,23 +1,21 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Harsh Gajbhiye — Digital Marketing & Websites",
+  title: "Harsh Gajbhiye, Digital Marketing & Websites",
   description:
-    "Portfolio of Harsh Gajbhiye — BBA Digital Marketing graduate from MIT-WPU, website builder for real clients, and national-level cricketer from Nagpur.",
+    "Portfolio of Harsh Gajbhiye. BBA Digital Marketing graduate from MIT-WPU, website builder for real clients, and national-level cricketer from Nagpur.",
 };
 
 export default function RootLayout({
@@ -28,9 +26,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${geist.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* Without JS the entry animations never clear, so reveal targets
+            would stay at opacity:0. Force them visible instead. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

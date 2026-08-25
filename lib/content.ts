@@ -1,7 +1,10 @@
 // ============================================================
-// SITE CONTENT — everything the site displays lives here.
-// Lines marked TODO still need real details: edit the value,
-// push to main, and the live site updates automatically.
+// SITE CONTENT. Everything the site displays lives here.
+// Edit a value, push to main, and the live site updates.
+//
+// House style: no em-dashes, and at most one middle dot (·) per
+// line. Hero intro stays at 20 words or fewer so the hero always
+// fits the first viewport.
 // ============================================================
 
 export const site = {
@@ -10,11 +13,13 @@ export const site = {
   role: "Digital Marketing Graduate",
   availability: "Open to opportunities",
   intro:
-    "BBA graduate in Digital Marketing from MIT-WPU. I build websites for real clients and bring an athlete's discipline — honed on national and international cricket fields — to everything I do.",
+    "BBA in Digital Marketing from MIT-WPU. I build websites for real clients, with an athlete's discipline behind the work.",
   email: "harsh.gajbhiye2005@gmail.com",
   phone: "+91 95038 72686",
   location: "Nagpur, Maharashtra",
   resume: "/Harsh-Gajbhiye-Resume.pdf",
+  // One label per intent, used identically in the nav and the hero.
+  contactCta: "Get in touch",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/harsh-gajbhiye" },
     { label: "GitHub", href: "https://github.com/harshgajbhiye2005-source" },
@@ -28,73 +33,92 @@ export const nav = [
   { label: "About me", href: "#about" },
 ];
 
-// Shown as the stack of cards in the dark "skills" section.
-export const services = [
+// Rendered as a bento grid. `span` drives the cell width on desktop so the
+// grid has rhythm instead of four identical tiles.
+export type Service = {
+  title: string;
+  description: string;
+  tags: string[];
+  span: "wide" | "narrow";
+};
+
+export const services: Service[] = [
   {
     title: "Digital Marketing",
     description:
-      "BBA in Digital Marketing from MIT-WPU (8/10 GPA) — grounded in strategy, branding, and campaigns that actually reach people.",
+      "BBA in Digital Marketing from MIT-WPU with an 8/10 GPA. Grounded in strategy, branding, and campaigns that actually reach people.",
     tags: ["Strategy", "Branding", "Social Media", "SEO", "Campaigns"],
+    span: "wide",
   },
   {
     title: "Website Development",
     description:
-      "I design and ship websites for real clients — from first brief to live launch, including PS Group and Artistically Yours.",
-    tags: ["Client Work", "Responsive", "Design", "Launch", "Maintenance"],
+      "I design and ship websites for real clients, from first brief to live launch.",
+    tags: ["Client Work", "Responsive", "Design", "Launch"],
+    span: "narrow",
   },
   {
-    title: "Client Servicing & Operations",
+    title: "Client Servicing",
     description:
-      "Two internships across operations and client servicing — keeping projects moving, clients informed, and details handled.",
-    tags: ["Communication", "Coordination", "Process", "Delivery", "Follow-through"],
+      "Two internships in operations and client servicing: projects moving, clients informed, details handled.",
+    tags: ["Communication", "Coordination", "Delivery"],
+    span: "narrow",
   },
   {
-    title: "Athlete's Discipline",
+    title: "An Athlete's Discipline",
     description:
-      "Cricket at the national and international level teaches what no classroom can: consistency, pressure handling, and showing up every day.",
-    tags: ["Teamwork", "Consistency", "Pressure", "Leadership", "Work Ethic"],
+      "Cricket at national and international level teaches what no classroom can: consistency, pressure handling, and showing up every day.",
+    tags: ["Teamwork", "Consistency", "Pressure", "Leadership"],
+    span: "wide",
   },
 ];
 
-// Featured projects list — title / status / context. Add a `href` to make
-// the whole card link out to a live site, or `links` for a row of labeled
-// links inside the card.
+// Featured work. `href` links the card out to a live site; `links` renders a
+// row of labeled links inside the card. `lead` marks the one project that
+// gets the large feature treatment.
 export type Project = {
   title: string;
-  year: string;
+  status: string;
   client: string;
+  summary: string;
+  lead?: boolean;
   href?: string;
   links?: { label: string; href: string }[];
 };
 
 export const projects: Project[] = [
   {
-    title: "PS Group Website",
-    year: "Completed",
+    title: "PS Group",
+    status: "Completed",
     client: "Client work",
+    summary:
+      "A marketing site built and shipped end to end, from the first brief through to launch.",
+    lead: true,
     href: "https://psgroupnagpur.tiiny.site/",
   },
   {
     title: "Artistically Yours",
-    year: "In progress",
+    status: "In progress",
     client: "Client work",
-    href: "",
+    summary: "A website in build for a Nagpur art and design studio.",
   },
   {
-    title: "Artistically Yours — Social Content",
-    year: "Internship",
-    client: "Content published on the client's Instagram",
+    title: "Social Content",
+    status: "Internship",
+    client: "Artistically Yours",
+    summary:
+      "On-camera work and content concepts, published on the client's Instagram.",
     links: [
       {
         label: "On-camera reel",
         href: "https://www.instagram.com/reel/DMAg7UsztpN/",
       },
       {
-        label: "Content concept 1",
+        label: "Concept 1",
         href: "https://www.instagram.com/reel/DNH8QYXTjU-/",
       },
       {
-        label: "Content concept 2",
+        label: "Concept 2",
         href: "https://www.instagram.com/reel/DLxQTcTT8oD/",
       },
     ],
@@ -104,48 +128,43 @@ export const projects: Project[] = [
 export const whyCards = [
   {
     tag: "Disciplined",
-    text: "Trained like an athlete — consistent effort, no shortcuts, every single day.",
-    tone: "from-neutral-400 to-neutral-700",
+    text: "Trained like an athlete. Consistent effort, no shortcuts, every single day.",
   },
   {
     tag: "Client-first",
     text: "Internships in client servicing taught me to listen first and deliver on time.",
-    tone: "from-neutral-500 to-neutral-800",
   },
   {
     tag: "Fast learner",
-    text: "New tools, new briefs, new industries — give me a week, not a semester.",
-    tone: "from-neutral-300 to-neutral-600",
+    text: "New tools, new briefs, new industries. Give me a week, not a semester.",
   },
   {
     tag: "Team player",
     text: "Years of team sport: communicate early, back your teammates, win together.",
-    tone: "from-neutral-600 to-neutral-900",
   },
 ];
 
-// Rendered as [tag | thumbnails | title | detail] rows.
+// Rendered as a stat strip: large value, small label beneath.
 export const achievements = [
   {
-    year: "Education",
-    title: "BBA, Digital Marketing",
-    award: "MIT-WPU · 8/10 GPA",
+    label: "Education",
+    value: "BBA, Digital Marketing",
+    detail: "MIT-WPU · 8/10 GPA",
   },
   {
-    year: "Cricket",
-    title: "International & National",
-    award:
+    label: "Cricket",
+    value: "International & National",
+    detail:
       "India U-19, Karwan Global Cricket League, Dubai · Represented Maharashtra, 64th National School Games",
   },
   {
-    year: "Badminton",
-    title: "District Level",
-    award: "Competitive player",
+    label: "Badminton",
+    value: "District Level",
+    detail: "Competitive player",
   },
   {
-    year: "Experience",
-    title: "2 Internships",
-    award: "Operations · Client Servicing",
+    label: "Experience",
+    value: "2 Internships",
+    detail: "Operations · Client servicing",
   },
 ];
-

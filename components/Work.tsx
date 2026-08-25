@@ -1,86 +1,87 @@
 import Reveal from "@/components/Reveal";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import { projects } from "@/lib/content";
 
-const statusStyles: Record<string, string> = {
-  Completed: "bg-emerald-100 text-emerald-800",
-  "In progress": "bg-amber-100 text-amber-800",
-  Internship: "bg-accent-soft text-accent",
-};
-
 export default function Work() {
+  const lead = projects.find((p) => p.lead);
+  const rest = projects.filter((p) => !p.lead);
+
   return (
-    <section id="work" className="bg-surface px-5 py-24 sm:px-10 sm:py-32">
+    <section id="work" className="bg-surface px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="eyebrow">Projects</p>
-          <h2 className="display mt-3 max-w-2xl text-4xl sm:text-5xl">
+          <h2 className="display max-w-2xl text-3xl sm:text-4xl lg:text-5xl">
             Work I&apos;ve shipped for real clients
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => {
-            const card = (
-              <article className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 transition-shadow duration-300 hover:shadow-lg sm:p-10">
-                <div>
-                  <span
-                    className={`inline-block rounded-full px-3.5 py-1.5 text-xs font-semibold ${
-                      statusStyles[project.year] ?? "bg-surface text-muted"
-                    }`}
-                  >
-                    {project.year}
-                  </span>
-                  <h3 className="display mt-5 text-2xl sm:text-3xl">
-                    {project.title}
-                  </h3>
-                </div>
-                <div className="mt-4">
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-sm font-medium text-muted">
-                      {project.client}
-                    </p>
-                    {project.href && (
-                      <span className="text-sm font-semibold text-accent">
-                        Visit site ↗
-                      </span>
-                    )}
-                  </div>
-                  {project.links && (
-                    <div className="mt-5 flex flex-wrap gap-2.5">
-                      {project.links.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="rounded-full border border-line px-4 py-2 text-xs font-semibold text-accent transition-colors duration-200 hover:border-accent"
-                        >
-                          {link.label} ↗
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </article>
-            );
+        {/* Lead project: one wide feature panel. */}
+        {lead && (
+          <Reveal delay={0.05}>
+            {/* TODO: add a screenshot of the live PS Group site at
+                1440x900 and place it in the right-hand column. */}
+            <article className="mt-12 grid gap-8 rounded-panel border border-line bg-background p-8 sm:p-12 md:grid-cols-[1.25fr_0.75fr] md:items-end">
+              <div>
+                <p className="font-mono text-xs text-muted">
+                  {lead.status} · {lead.client}
+                </p>
+                <h3 className="display mt-4 text-3xl sm:text-4xl lg:text-5xl">
+                  {lead.title}
+                </h3>
+                <p className="mt-4 max-w-[48ch] leading-relaxed text-muted">
+                  {lead.summary}
+                </p>
+              </div>
 
-            return (
-              <Reveal key={project.title} delay={i * 0.08}>
-                {project.href ? (
+              {lead.href && (
+                <div className="md:text-right">
                   <a
-                    href={project.href}
+                    href={lead.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block h-full"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold whitespace-nowrap text-accent-fg transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
                   >
-                    {card}
+                    Visit site
+                    <ArrowUpRightIcon size={15} weight="bold" />
                   </a>
-                ) : (
-                  card
+                </div>
+              )}
+            </article>
+          </Reveal>
+        )}
+
+        {/* Supporting projects. */}
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          {rest.map((project, i) => (
+            <Reveal key={project.title} delay={0.1 + i * 0.07}>
+              <article className="h-full rounded-panel border border-line bg-background p-8 sm:p-9">
+                <p className="font-mono text-xs text-muted">
+                  {project.status} · {project.client}
+                </p>
+                <h3 className="display-sm mt-3 text-2xl">{project.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted">
+                  {project.summary}
+                </p>
+
+                {project.links && (
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-4 py-2 text-xs font-semibold whitespace-nowrap transition-colors duration-200 hover:border-accent hover:text-accent"
+                      >
+                        {link.label}
+                        <ArrowUpRightIcon size={13} weight="bold" />
+                      </a>
+                    ))}
+                  </div>
                 )}
-              </Reveal>
-            );
-          })}
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

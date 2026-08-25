@@ -1,15 +1,44 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN TOKENS
+   One accent for the whole page (warm vermillion), one neutral
+   family (warm grey), one theme at a time. Section backgrounds
+   only shift within the active theme, never invert.
+
+   Contrast (WCAG AA verified):
+     light  fg/bg 15.99 · muted/bg 5.27 · muted/surface 4.78
+            accent/bg 5.06 · accent-fg on accent 5.51
+     dark   fg/bg 16.62 · muted/bg 7.30 · muted/surface 6.63
+            accent/bg 6.88 · accent-fg on accent 6.88
+   ============================================================ */
+
 :root {
-  --background: #faf9f7;
-  --foreground: #1c1917;
-  --muted: #78716c;
-  --surface: #f3f1ee;
-  --dark: #1c1917;
-  --line: rgba(28, 25, 23, 0.1);
-  --line-invert: rgba(255, 255, 255, 0.16);
-  --accent: #4f46e5;
-  --accent-soft: #eef2ff;
+  --background: #f6f5f3;
+  --surface: #eceae6;
+  --foreground: #1a1a19;
+  --muted: #68665f;
+  --accent: #b4451d;
+  /* Text/icon color that sits ON a filled accent surface. Flips per theme
+     so buttons never end up low-contrast in one mode. */
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(180, 69, 29, 0.1);
+  --line: rgba(26, 26, 25, 0.12);
+  --line-strong: rgba(26, 26, 25, 0.22);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #131312;
+    --surface: #1d1d1b;
+    --foreground: #f3f2f0;
+    --muted: #a5a29c;
+    --accent: #e8834a;
+    --accent-fg: #131312;
+    --accent-soft: rgba(232, 131, 74, 0.14);
+    --line: rgba(243, 242, 240, 0.14);
+    --line-strong: rgba(243, 242, 240, 0.26);
+  }
 }
 
 @theme inline {
@@ -17,12 +46,18 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
-  --color-dark: var(--dark);
-  --color-line: var(--line);
-  --color-line-invert: var(--line-invert);
   --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-inter);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+
+  /* SHAPE LOCK. The documented radius rule for this project:
+     panels, media and tiles = 8px; buttons and pills = full.
+     Nothing on the page uses any other radius. */
+  --radius-panel: 8px;
 }
 
 html {
@@ -32,35 +67,65 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-fg);
 }
 
-/* Serif display style used for headings across all sections */
+/* Display type. Sans, not serif: this is a portfolio for recruiters,
+   not an editorial publication. Weight and scale carry the hierarchy. */
 .display {
-  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  /* 1.1 minimum so descenders (g, y, p, j) are never clipped. */
+  line-height: 1.1;
 }
 
-/* Small uppercase eyebrow label above section headings */
-.eyebrow {
-  font-size: 0.75rem;
+.display-sm {
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Texture for one bento cell so the grid is not four flat tiles.
+   Uses the existing line token, so it follows the theme. */
+.tone-dots {
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Motion safety net. Entry animations start from opacity:0, which is only
+   safe while the script that clears them is running. Anything marked
+   [data-reveal] is forced visible when the user prefers reduced motion,
+   and (via the <noscript> block in layout) when JS never runs at all. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
